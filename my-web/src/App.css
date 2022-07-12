@@ -1,0 +1,342 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+br {
+  display: block;
+  content: "";
+  margin-bottom: 1em;
+}
+
+.Hide {
+  visibility: hidden;
+  width: 0!important;
+  height: 0!important;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8vmax;
+}
+
+body.Dark {
+  background-color: black;
+}
+
+body.Light {
+  background-color: rgb(229, 229, 229);
+}
+
+.App.Dark {
+  background-color: black;
+  color: white;
+}
+
+.App.Light {
+  background-color: rgb(229, 229, 229);
+  color: black;
+}
+
+.Sub {
+  display: block;
+}
+
+.Sub>* {
+  margin: 5vmin auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-link {
+  color: #CB4335;
+}
+
+.Nav {
+  background-color: transparent;
+  padding: 2vmin 5vmin 2vmin 5vmin;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: sticky;
+}
+
+.Nav-Item {
+  margin-right: 2vmin;
+  color: white;
+
+}
+
+.Nav-Main-Text {
+  min-width: 40%;
+  color: #E67E22;
+  cursor: none;
+  text-decoration: none !important;
+}
+
+.Nav-Links {
+  min-width: 60%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  /* justify-content: right; */
+}
+
+#meMainImg {
+  object-fit: cover;
+  align-self: center;
+  max-width: 20%;
+  height: calc(75vh - 4vmin);
+
+  /* width: fit-content; */
+}
+
+.Body-Info {
+  /* height: 100vh; */
+  min-height: fit-content;
+  /* margin: 0px 0px calc(100vh - 100%) 0px; */
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-content: center;
+  justify-self: center;
+}
+
+.Body-Info:first-child {
+  min-height: 100vh;
+}
+
+.Showable {
+  position: relative;
+
+  opacity: 1;
+  top: 0em;
+
+  transition: top 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.Showable.Fade {
+  position: relative;
+
+  top: 2em;
+  opacity: 0;
+
+  transition: top 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.Body-Info>* {
+  margin: 2vmin;
+}
+
+
+.Center {
+  width: 100vw;
+  height: calc(50vh - 4vmin);
+  display: inline;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
+  float: left;
+}
+
+.Text-Container {
+  margin: 0px;
+  max-width: max-content;
+
+  align-self: center;
+  justify-self: center;
+  float: left;
+}
+
+#mode {
+  cursor: pointer;
+  position: fixed;
+  width: 3vmax;
+  height: 3vmax;
+  right: 2vmin;
+  bottom: 2vmin;
+}
+
+#mode:hover {
+  animation: modeHover 0.5s infinite;
+  animation-fill-mode: both;
+}
+
+@keyframes modeHover {
+  0% {
+    bottom: 2vmin;
+  }
+
+  25% {
+    bottom: 2.5vmin;
+  }
+
+  50% {
+    bottom: 2vmin;
+  }
+
+  75% {
+    bottom: 1.5vmin;
+  }
+
+  100% {
+    bottom: 2vmin;
+  }
+}
+
+.Sub-Body-Text {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.Projects {
+  width: 90%;
+
+  display: flex;
+  flex-direction: row;
+
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  /* flex-direction: row; */
+}
+
+.Project-Container {
+  /* transition: left 1s; */
+  padding: 2em;
+
+  flex: 0 0 calc(max(30%, 215px));
+  /* min-height: 60% !important; */
+  /* box-shadow: 0.5em 0.5em 0.12em 0.08em #565E65; */
+
+  border-radius: 5%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.Project-Container.Dark {
+  background-color: #808B96;
+}
+
+.Project-Container.Dark>.Sub-Body-Text {
+  color: white;
+  font-size: 0.8em;
+}
+
+.Project-Container.Light {
+  background-color: #273746;
+}
+
+.Project-Container.Light>.Sub-Body-Text {
+  color: white;
+  font-size: 0.8em;
+}
+
+.Project-Container>* {
+  margin-top: 0.8em;
+}
+
+.Project-Title {
+  color: #85C1E9;
+  text-align: center;
+}
+
+.Thumbnail {
+  /* display: block; */
+  /* margin-right: auto;
+  margin-left: auto; */
+  float: left;
+  width: 25%;
+  border-radius: 50%;
+  border: 0.3em solid;
+}
+
+.Thumbnail.Dark {
+  border-color: #273746;
+}
+
+.Thumbnail.Light {
+  border-color: #E5E7E9;
+}
+
+.Gallary {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  flex-direction: row;
+}
+
+.Arrow {
+  position: sticky;
+  /* margin-top: 25%; */
+
+  top: calc(50% - 6vmax / 2);
+
+  cursor: pointer;
+  min-width: 6vmax;
+  height: 6vmax;
+}
+
+.Arrow:hover {
+  animation: modeHover 0.5s infinite;
+  animation-fill-mode: both;
+}
+
+.Main-Info {
+  width: 100%;
+  display: flexbox;
+  flex-direction: row;
+  text-align: right;
+  text-overflow: wrap;
+  margin-bottom: 2em;
+}
+
+.Name-Num {
+  float: right;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.Name-Num > p {
+  float: right;
+}
+
+.Project-Body {
+  position: relative;
+}
+
+.Text-Promt {
+  cursor: pointer;
+  position: absolute;
+  bottom: 1em;
+}
+
+.Socials {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+
+  margin: 0 auto;
+}
+
+.Socials:first-child {
+  flex-grow: 1;
+}
