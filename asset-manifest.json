@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Selim.Abdelwahab.github.io/static/css/main.5ee51126.css",
-    "main.js": "/Selim.Abdelwahab.github.io/static/js/main.4547e0cc.js",
+    "main.css": "/Selim.Abdelwahab.github.io/static/css/main.42de7110.css",
+    "main.js": "/Selim.Abdelwahab.github.io/static/js/main.d2520d9b.js",
     "static/js/787.e3835ec5.chunk.js": "/Selim.Abdelwahab.github.io/static/js/787.e3835ec5.chunk.js",
     "static/media/web-img.jpg": "/Selim.Abdelwahab.github.io/static/media/web-img.3059c99d2b4829af262c.jpg",
     "static/media/Chess++ Icon.jpg": "/Selim.Abdelwahab.github.io/static/media/Chess++ Icon.c2bd800e786e901ef55c.jpg",
@@ -10,12 +10,12 @@
     "static/media/Insertion Sort Icon.jpg": "/Selim.Abdelwahab.github.io/static/media/Insertion Sort Icon.2155570fd047db0ee96a.jpg",
     "static/media/2D Conservation of Momentum Icon.jpg": "/Selim.Abdelwahab.github.io/static/media/2D Conservation of Momentum Icon.a639a2d173915eba048d.jpg",
     "index.html": "/Selim.Abdelwahab.github.io/index.html",
-    "main.5ee51126.css.map": "/Selim.Abdelwahab.github.io/static/css/main.5ee51126.css.map",
-    "main.4547e0cc.js.map": "/Selim.Abdelwahab.github.io/static/js/main.4547e0cc.js.map",
+    "main.42de7110.css.map": "/Selim.Abdelwahab.github.io/static/css/main.42de7110.css.map",
+    "main.d2520d9b.js.map": "/Selim.Abdelwahab.github.io/static/js/main.d2520d9b.js.map",
     "787.e3835ec5.chunk.js.map": "/Selim.Abdelwahab.github.io/static/js/787.e3835ec5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ee51126.css",
-    "static/js/main.4547e0cc.js"
+    "static/css/main.42de7110.css",
+    "static/js/main.d2520d9b.js"
   ]
 }
