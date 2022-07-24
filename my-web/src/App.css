@@ -6,13 +6,13 @@
 br {
   display: block;
   content: "";
-  margin-bottom: 1em;
+  margin-bottom: 0.2em;
 }
 
 .Hide {
   visibility: hidden;
-  width: 0!important;
-  height: 0!important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .App-logo {
@@ -27,38 +27,39 @@ br {
   display: flex;
   flex-direction: column;
   font-size: 1.8vmax;
+  display: block;
 }
 
 body.Dark {
   background-color: black;
+  transition: background-color 1s ease;
 }
 
 body.Light {
   background-color: rgb(229, 229, 229);
+  transition: background-color 1s ease;
 }
 
 .App.Dark {
   background-color: black;
   color: white;
+  transition: background-color 1s ease;
 }
 
 .App.Light {
   background-color: rgb(229, 229, 229);
   color: black;
-}
-
-.Sub {
-  display: block;
-}
-
-.Sub>* {
-  margin: 5vmin auto;
-  display: flex;
-  flex-direction: column;
+  transition: background-color 1s ease;
 }
 
 .App-link {
   color: #CB4335;
+}
+
+.App>* {
+  margin: 5vmin auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .Nav {
@@ -96,15 +97,19 @@ body.Light {
 #meMainImg {
   object-fit: cover;
   align-self: center;
-  max-width: 20%;
+  max-width: 40%;
   height: calc(75vh - 4vmin);
 
+  border-bottom-left-radius: 2em;
+  border-top-left-radius: 2em;
   /* width: fit-content; */
 }
 
 .Body-Info {
+  position: relative;
   /* height: 100vh; */
   min-height: fit-content;
+  width: fit-content;
   /* margin: 0px 0px calc(100vh - 100%) 0px; */
   display: flex;
   flex-direction: row;
@@ -114,10 +119,33 @@ body.Light {
   align-self: center;
   justify-content: center;
   justify-self: center;
+  text-align: center;
 }
 
-.Body-Info:first-child {
+/* .Body-Info:first-child {
   min-height: 100vh;
+} */
+
+.Overlay {
+  position: absolute;
+  /* width: 100%; */
+  bottom: 0;
+  backdrop-filter: blur(1vw);
+}
+
+.Sub-Body-Text.Overlay {
+  /* width:  calc(100% - 2em) !important; */
+  border-bottom-left-radius: 2em;
+  /* padding: 0.5em; */
+
+}
+
+.Overlay.Dark {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.Overlay.Light {
+  background-color: rgb(229, 229, 229, 0.3);
 }
 
 .Showable {
@@ -138,13 +166,8 @@ body.Light {
   transition: top 1s ease-in-out, opacity 1s ease-in-out;
 }
 
-.Body-Info>* {
-  margin: 2vmin;
-}
-
-
 .Center {
-  width: 100vw;
+  width: 100%;
   height: calc(50vh - 4vmin);
   display: inline;
   justify-content: center;
@@ -152,6 +175,7 @@ body.Light {
   align-content: center;
   align-self: center;
   float: left;
+  text-align: center;
 }
 
 .Text-Container {
@@ -215,22 +239,43 @@ body.Light {
   /* flex-direction: row; */
 }
 
+.Project-Expanded {
+  position: relative;
+}
+
+.Project-Background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.Project-Background > img {
+  width: 100%;
+  height: 100%;
+  filter: blur(10px) brightness(0.3) saturate(0.5);
+}
+
 .Project-Container {
-  /* transition: left 1s; */
+  position: inherit;
+
   padding: 2em;
+  margin: 0.5em;
 
-  flex: 0 0 calc(max(30%, 215px));
-  /* min-height: 60% !important; */
-  /* box-shadow: 0.5em 0.5em 0.12em 0.08em #565E65; */
+  flex: 1 1 calc(max(30%, 215px));
 
-  border-radius: 5%;
+  border-radius: 2em;
 
   display: flex;
   flex-direction: column;
 }
 
-.Project-Container.Dark {
-  background-color: #808B96;
+.Project-Container.Expanded {
+  position: absolute;
+}
+
+.Project-Container.Dark.Shrunk {
+  /* background-color: #808B96; */
+  background-image:linear-gradient(to bottom, #FDFEFE 75%, #979A9A 25%)
 }
 
 .Project-Container.Dark>.Sub-Body-Text {
@@ -238,30 +283,61 @@ body.Light {
   font-size: 0.8em;
 }
 
-.Project-Container.Light {
-  background-color: #273746;
+.Project-Container.Light.Shrunk {
+  /* background-color: #273746;
+   */
+  background-image:linear-gradient(to bottom, #ABB2B9 75%, #17202A 25%)
+
 }
 
 .Project-Container.Light>.Sub-Body-Text {
   color: white;
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }
 
-.Project-Container>* {
-  margin-top: 0.8em;
+.Project-Desc {
+  margin-bottom: 1em;
+}
+
+.Project-Links {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row;
+  margin: 0;
+  padding: 0;
+}
+
+.Project-Links>* {
+  flex-grow: 1;
+}
+
+.Main-Info {
+  display: flexbox;
+  width: 100%;
+  text-align: right;
+  margin-bottom: 2rem;
+  vertical-align: middle;
+  /* line-height: calc(min(30%, 10vw)); */
 }
 
 .Project-Title {
+  /* display: inline-block; */
   color: #85C1E9;
+  text-align: right;
+  /* vertical-align: middle; */
+}
+
+.Project-Title.Expanded {
   text-align: center;
 }
 
 .Thumbnail {
-  /* display: block; */
-  /* margin-right: auto;
-  margin-left: auto; */
   float: left;
-  width: 25%;
+  width: 10vw;
+  height: 10vw;
+  /* min-width: 30%;
+  min-height: 30%; */
+  max-width: 10vw;
   border-radius: 50%;
   border: 0.3em solid;
 }
@@ -274,69 +350,92 @@ body.Light {
   border-color: #E5E7E9;
 }
 
-.Gallary {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: block;
-  overflow: hidden;
-  flex-direction: row;
-}
-
 .Arrow {
   position: sticky;
-  /* margin-top: 25%; */
-
   top: calc(50% - 6vmax / 2);
 
   cursor: pointer;
+  width: 6vmax;
   min-width: 6vmax;
   height: 6vmax;
-}
 
-.Arrow:hover {
-  animation: modeHover 0.5s infinite;
-  animation-fill-mode: both;
-}
-
-.Main-Info {
-  width: 100%;
-  display: flexbox;
-  flex-direction: row;
-  text-align: right;
-  text-overflow: wrap;
-  margin-bottom: 2em;
+  transition: all 0.5s;
 }
 
 .Name-Num {
   float: right;
   display: flex;
   flex-direction: column;
-
 }
 
-.Name-Num > p {
+.Name-Num>p {
   float: right;
 }
 
 .Project-Body {
   position: relative;
+  color:white
 }
 
 .Text-Promt {
+  font-weight: bolder;
   cursor: pointer;
   position: absolute;
   bottom: 1em;
+  left: 0;
+  right: 0;
 }
 
-.Socials {
-  width: fit-content;
+a.Coming-Soon:active {
+  pointer-events: none;
+}
+
+.Coming-Soon {
+  cursor: not-allowed;
+  
+  color: grey
+}
+
+.Coming-Soon::after {
+  content: "Coming Soon";
+  color: black;
+  display: block;
+
+  opacity: 0;
+  position: relative;
+
+  padding: 2px;
+
+  /* width: 150px; */
+  top: -50%;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  /* border: 1px solid #000000; */
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+.Coming-Soon:hover::after {
+  /* display: block; */
+  opacity: 1;
+}
+
+.About-Me {
+  width: 98%;
   display: flex;
   flex-direction: row;
-
-  margin: 0 auto;
 }
 
-.Socials:first-child {
+.About-Me > * {
   flex-grow: 1;
+}
+
+.About-Me-Info {
+  font-size: 1.5rem;
+  padding: 0.2rem;
 }
