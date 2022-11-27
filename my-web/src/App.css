@@ -20,34 +20,32 @@ br {
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {}
-
 .App {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
-  font-size: 1.8vmax;
+  font-size: calc(min(3vw, 1.5rem));
   display: block;
 }
 
 body.Dark {
-  background-color: black;
+  background-color: #17202A;
   transition: background-color 1s ease;
 }
 
 body.Light {
-  background-color: rgb(229, 229, 229);
+  background-color: #CCD1D1;
   transition: background-color 1s ease;
 }
 
 .App.Dark {
-  background-color: black;
+  background-color: #17202A;
   color: white;
   transition: background-color 1s ease;
 }
 
 .App.Light {
-  background-color: rgb(229, 229, 229);
+  background-color: #CCD1D1;
   color: black;
   transition: background-color 1s ease;
 }
@@ -61,6 +59,156 @@ body.Light {
   display: flex;
   flex-direction: column;
 }
+
+@media (prefers-reduced-motion: no-preference) {}
+
+.Text-Promt {
+  font-weight: bolder;
+  cursor: pointer;
+  position: absolute;
+  /* margin-top: 2rem; */
+  bottom: 6.75%;
+  left: 0;
+  right: 0;
+}
+
+.Text-Promt:hover {
+  position: absolute;
+  margin: 0 auto;
+
+  width: fit-content;
+
+  bottom: calc(6.75% - min(10px, 5px));
+
+  padding: min(10px, 5px);
+  /* padding: 100px; */
+  /* bottom: calc(6.75% - 100px); */
+}
+
+@keyframes textPromtAni {
+  0% {
+    left: 0;
+    right: 0;
+  }
+
+  25% {
+    left: 0.5%;
+  }
+
+  50% {
+    left: 0;
+    right: 0;
+  }
+
+  75% {
+    right: 0.5%;
+  }
+
+  100% {
+    left: 0;
+    right: 0;
+  }
+}
+
+.Text-Promt:hover>.Border-Top, .Text-Promt:hover>.Border-Bottom {
+  content: "";
+  position: absolute;
+  display: block;
+
+
+  width: 0px;
+  height: 0.1rem;
+
+  background-color: red;
+
+  animation: expandHorizontal 250ms ease-in normal both;
+}
+
+.Text-Promt:hover>.Border-Right, .Text-Promt:hover>.Border-Left {
+  content: "";
+
+  position: absolute;
+  display: block;
+  width: 0.1rem;
+  height: 0px;
+
+  background-color: red;
+
+  animation: expandVertical 250ms ease-in normal both;
+  animation-delay: 250ms;
+}
+
+.Text-Promt:hover>.Border-Top {
+  top: 0%;
+  left: 0;
+  right: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  overflow: hidden;
+}
+
+.Text-Promt:hover>.Border-Bottom {
+  bottom: 0%;
+  left: 0;
+  right: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  overflow: hidden;
+}
+
+.Text-Promt:hover>.Border-Right {
+  right: 0%;
+  top: 0;
+  bottom: 0;
+
+  margin-top: auto;
+  margin-bottom: auto;
+
+  overflow: hidden;
+}
+
+.Text-Promt:hover>.Border-Left {
+  left: 0%;
+  top: 0;
+  bottom: 0;
+
+  margin-top: auto;
+  margin-bottom: auto;
+
+  overflow: hidden;
+}
+
+@keyframes expandHorizontal {
+  from {
+    width: 0px;
+    height: 0.2rem;
+  }
+
+  to {
+    width: 100%;
+    height: 0.2rem;
+    border-radius: 10rem;
+  }
+}
+
+@keyframes expandVertical {
+  from {
+    width: 0.2rem;
+    height: 0;
+  }
+
+  to {
+    width: 0.2rem;
+    height: 100%;
+    border-radius: 10rem;
+  }
+}
+
+
 
 .Nav {
   background-color: transparent;
@@ -91,7 +239,6 @@ body.Light {
   display: flex;
   flex-direction: row;
   justify-content: right;
-  /* justify-content: right; */
 }
 
 #meMainImg {
@@ -102,15 +249,14 @@ body.Light {
 
   border-bottom-left-radius: 2em;
   border-top-left-radius: 2em;
-  /* width: fit-content; */
 }
 
 .Body-Info {
   position: relative;
-  /* height: 100vh; */
+
   min-height: fit-content;
   width: fit-content;
-  /* margin: 0px 0px calc(100vh - 100%) 0px; */
+
   display: flex;
   flex-direction: row;
 
@@ -122,22 +268,15 @@ body.Light {
   text-align: center;
 }
 
-/* .Body-Info:first-child {
-  min-height: 100vh;
-} */
-
 .Overlay {
   position: absolute;
-  /* width: 100%; */
+
   bottom: 0;
   backdrop-filter: blur(4vw);
 }
 
-.Sub-Body-Text.Overlay {
-  /* width:  calc(100% - 2em) !important; */
+.About-Me-Info.Overlay {
   border-bottom-left-radius: 2em;
-  /* padding: 0.5em; */
-
 }
 
 .Overlay.Dark {
@@ -190,36 +329,56 @@ body.Light {
 #mode {
   cursor: pointer;
   position: fixed;
+
   width: 3vmax;
   height: 3vmax;
-  right: 2vmin;
-  bottom: 2vmin;
+
+  right: 1rem;
+  bottom: 0.1rem;
 }
 
 #mode:hover {
   animation: modeHover 0.5s infinite;
   animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+
+#mode {
+  animation-name: modeIdle;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  bottom: 2rem;
 }
 
 @keyframes modeHover {
   0% {
-    bottom: 2vmin;
+    bottom: 2rem;
   }
 
   25% {
-    bottom: 2.5vmin;
+    bottom: 2.5rem;
   }
 
   50% {
-    bottom: 2vmin;
+    bottom: 2rem;
   }
 
   75% {
-    bottom: 1.5vmin;
+    bottom: 1.5rem;
   }
 
   100% {
-    bottom: 2vmin;
+    bottom: 2rem;
+  }
+}
+
+@keyframes modeIdle {
+  from {}
+
+  to {
+    right: 1rem;
+    bottom: 2rem;
   }
 }
 
@@ -235,8 +394,6 @@ body.Light {
 
   flex-wrap: wrap;
   align-items: stretch;
-
-  /* flex-direction: row; */
 }
 
 .Project-Expanded {
@@ -249,10 +406,10 @@ body.Light {
   height: 100%;
 }
 
-.Project-Background > img {
+.Project-Background>img {
   width: 100%;
   height: 100%;
-  filter: blur(10px) brightness(0.3) saturate(0.5);
+  filter: blur(0.5rem) brightness(0.3) saturate(0.5);
 }
 
 .Project-Container {
@@ -274,25 +431,31 @@ body.Light {
 }
 
 .Project-Container.Dark.Shrunk {
-  /* background-color: #808B96; */
-  background-image:linear-gradient(to bottom, #FDFEFE 75%, #979A9A 25%)
+  background-image: linear-gradient(to bottom, #000000cb 75%, #ffffff 25%);
+  filter: drop-shadow(0 0 0.1rem rgb(255, 255, 255));
+  border: 0.3rem solid black;
+
+}
+
+.Project-Container.Light.Shrunk {
+  background-image: linear-gradient(to bottom, #ffffffcb 75%, #17202a 25%);
+  filter: drop-shadow(0 0 0.1rem black);
+  border: 0.3rem solid white;
+}
+
+.About-Me-Info {
+  font-size: calc(min(3.5vw, 1.5rem));
+  line-height: calc(min(3vw, 1.8rem));
+  padding: 0.2rem;
+  font-weight: bold;
 }
 
 .Project-Container.Dark>.Sub-Body-Text {
   color: white;
-  font-size: 0.8em;
-}
-
-.Project-Container.Light.Shrunk {
-  /* background-color: #273746;
-   */
-  background-image:linear-gradient(to bottom, #ABB2B9 75%, #17202A 25%)
-
 }
 
 .Project-Container.Light>.Sub-Body-Text {
   color: white;
-  font-size: 0.8rem;
 }
 
 .Project-Desc {
@@ -317,14 +480,28 @@ body.Light {
   text-align: right;
   margin-bottom: 2rem;
   vertical-align: middle;
-  /* line-height: calc(min(30%, 10vw)); */
 }
 
 .Project-Title {
-  /* display: inline-block; */
   color: #85C1E9;
   text-align: right;
-  /* vertical-align: middle; */
+  text-shadow: -0.2vw -0.2vw 0.2rem black,
+    -0.2vw 0.2vw 0.2rem black,
+    0.2vw -0.2vw 0.2rem black,
+    0.2vw 0.2vw 0.2rem black;
+
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  text-decoration-thickness: 0.2vw;
+  /* text-decoration-color: rgb(0, 0, 0); */
+}
+
+.Project-Title.Light {
+  filter: sepia(100%);
+}
+
+.Project-Title.Dark {
+  filter: sepia(100%);
 }
 
 .Project-Title.Expanded {
@@ -335,19 +512,18 @@ body.Light {
   float: left;
   width: 10vw;
   height: 10vw;
-  /* min-width: 30%;
-  min-height: 30%; */
+
   max-width: 10vw;
   border-radius: 50%;
   border: 0.3em solid;
 }
 
 .Thumbnail.Dark {
-  border-color: #273746;
+  border-color: white;
 }
 
 .Thumbnail.Light {
-  border-color: #E5E7E9;
+  border-color: black;
 }
 
 .Arrow {
@@ -374,25 +550,16 @@ body.Light {
 
 .Project-Body {
   position: relative;
-  color:white
+  color: white
 }
 
-.Text-Promt {
-  font-weight: bolder;
-  cursor: pointer;
-  position: absolute;
-  bottom: 1em;
-  left: 0;
-  right: 0;
-}
-
-a.Coming-Soon:active {
+.Coming-Soon:active {
   pointer-events: none;
 }
 
 .Coming-Soon {
   cursor: not-allowed;
-  
+
   color: grey
 }
 
@@ -406,11 +573,10 @@ a.Coming-Soon:active {
 
   padding: 2px;
 
-  /* width: 150px; */
   top: -50%;
   text-align: center;
   background-color: rgb(255, 255, 255);
-  /* border: 1px solid #000000; */
+
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -ms-border-radius: 2px;
@@ -420,8 +586,7 @@ a.Coming-Soon:active {
   text-decoration: none !important;
 }
 
-.Coming-Soon:hover::after {
-  /* display: block; */
+.Coming-Soon:hover::after, .Coming-Soon:checked {
   opacity: 1;
 }
 
@@ -431,12 +596,6 @@ a.Coming-Soon:active {
   flex-direction: row;
 }
 
-.About-Me > * {
+.About-Me>* {
   flex-grow: 1;
-}
-
-.About-Me-Info {
-  font-size: 1.5rem;
-  padding: 0.2rem;
-  font-weight: bold;
 }
